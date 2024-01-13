@@ -1,4 +1,4 @@
-package com.example.socialpets.data
+package com.example.socialpets.data.api
 
 import com.example.socialpets.Profile
 import retrofit2.Response

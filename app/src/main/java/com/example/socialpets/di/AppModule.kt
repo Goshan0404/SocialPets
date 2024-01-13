@@ -1,6 +1,6 @@
 package com.example.socialpets.di
 
-import com.example.socialpets.data.ProfileApi
+import com.example.socialpets.data.api.ProfileApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
