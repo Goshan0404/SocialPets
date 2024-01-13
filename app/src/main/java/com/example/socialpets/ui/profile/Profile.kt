@@ -22,14 +22,15 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.socialpets.Pet
 import com.example.socialpets.R
-import com.example.socialpets.Resources
+import com.example.socialpets.Profile
 
 val resources = arrayOf(
-    Resources("Pes", R.drawable.img),
-    Resources("Murzik", R.drawable.img_1),
-    Resources("Lox", R.drawable.img_2),
-    Resources("Kesha", R.drawable.img_3)
+    Pet("Pes", R.drawable.img, "Ovcharka"),
+    Pet("Murzik", R.drawable.img_1, "Ovcharka"),
+    Pet("Lox", R.drawable.img_2, "Ovcharka"),
+    Pet("Kesha", R.drawable.img_3, "Ovcharka")
 )
 
 @Preview
