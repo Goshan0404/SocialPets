@@ -22,39 +22,36 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.socialpets.Pet
 import com.example.socialpets.R
 import com.example.socialpets.Profile
+import dagger.hilt.android.scopes.ViewModelScoped
 
-val resources = arrayOf(
-    Pet("Pes", R.drawable.img, "Ovcharka"),
-    Pet("Murzik", R.drawable.img_1, "Ovcharka"),
-    Pet("Lox", R.drawable.img_2, "Ovcharka"),
-    Pet("Kesha", R.drawable.img_3, "Ovcharka")
-)
-
-@Preview
 @Composable
-fun Profile() {
+fun Profile(viewModel: ProfileViewModel = hiltViewModel()) {
+
+    val profileData = viewModel.getProfileData()
+
     Column {
 
-        OwnerCard()
+        OwnerCard(profileData)
 
         Divider(Modifier.padding(horizontal = 5.dp))
 
-        PetsList()
+        PetsList(profileData)
     }
 
 }
 
 @Composable
-private fun PetsList() {
+private fun PetsList(profileData: Profile) {
     LazyVerticalGrid(columns = GridCells.Fixed(2), contentPadding = PaddingValues(5.dp)) {
-        items(resources) { r ->
+        items(profileData.pets) { pet ->
             Card(modifier = Modifier.padding(5.dp)) {
-                Text(text = r.name, Modifier.padding(start = 3.dp, top = 3.dp))
+                Text(text = pet.name, Modifier.padding(start = 3.dp, top = 3.dp))
                 Image(
-                    painter = painterResource(id = r.photo), contentDescription = null,
+                    painter = painterResource(id = pet.photo), contentDescription = null,
                     contentScale = ContentScale.Crop, modifier = Modifier
                         .size(200.dp)
                         .clip(
@@ -68,7 +65,7 @@ private fun PetsList() {
 }
 
 @Composable
-private fun OwnerCard() {
+private fun OwnerCard(profileData: Profile) {
     Card(
         Modifier
             .fillMaxWidth()
@@ -76,7 +73,7 @@ private fun OwnerCard() {
     ) {
         Row() {
             Image(
-                painter = painterResource(id = R.drawable.img_4),
+                painter = painterResource(id = profileData.photo),
                 contentScale = ContentScale.Crop,
                 modifier = Modifier.size(220.dp),
                 contentDescription = null
@@ -85,18 +82,18 @@ private fun OwnerCard() {
             Column {
 
                 Text(
-                    text = "Luda",
+                    text = profileData.name,
                     Modifier.padding(start = 3.dp, top = 3.dp),
                     textAlign = TextAlign.Center
                 )
                 Text(
-                    text = "18 y.o",
+                    text = "${profileData.bio} y.o",
                     Modifier.padding(start = 3.dp, top = 3.dp),
                     textAlign = TextAlign.Center
                 )
                 Divider()
                 Text(text = "About me")
-                Text(text = "Young beauty model")
+                Text(text = profileData.bio)
             }
         }
     }
