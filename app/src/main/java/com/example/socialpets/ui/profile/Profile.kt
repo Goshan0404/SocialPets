@@ -27,15 +27,16 @@ import com.example.socialpets.data.model.Profile
 @Composable
 fun Profile(viewModel: ProfileViewModel = hiltViewModel()) {
 
-    val profileData = viewModel.getProfileData()
+    val uiState = viewModel.uiState
 
     Column {
 
-        OwnerCard(profileData)
+        uiState.value.data?.let { OwnerCard(it) }
 
         Divider(Modifier.padding(horizontal = 5.dp))
 
-        PetsList(profileData)
+        uiState.value.data?.let { PetsList(it) }
+
     }
 
 }
