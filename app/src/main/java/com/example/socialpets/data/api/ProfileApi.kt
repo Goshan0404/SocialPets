@@ -1,6 +1,6 @@
 package com.example.socialpets.data.api
 
-import com.example.socialpets.Profile
+import com.example.socialpets.data.model.Profile
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query

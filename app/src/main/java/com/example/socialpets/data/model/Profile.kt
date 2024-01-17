@@ -1,4 +1,4 @@
-package com.example.socialpets
+package com.example.socialpets.data.model
 
 data class Profile(
     val name: String,

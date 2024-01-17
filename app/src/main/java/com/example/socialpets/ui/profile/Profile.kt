@@ -20,13 +20,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.socialpets.Pet
-import com.example.socialpets.R
-import com.example.socialpets.Profile
-import dagger.hilt.android.scopes.ViewModelScoped
+import com.example.socialpets.data.model.Profile
 
 @Composable
 fun Profile(viewModel: ProfileViewModel = hiltViewModel()) {

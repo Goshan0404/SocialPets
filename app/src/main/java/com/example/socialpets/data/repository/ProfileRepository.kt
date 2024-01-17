@@ -1,7 +1,7 @@
 package com.example.socialpets.data.repository
 
-import com.example.socialpets.Pet
-import com.example.socialpets.Profile
+import com.example.socialpets.data.model.Pet
+import com.example.socialpets.data.model.Profile
 import com.example.socialpets.R
 
 object ProfileRepository {
